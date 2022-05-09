@@ -13,7 +13,7 @@ class PostSingleController extends Controller
 
         if(View::exists('post-single')) {
             if(empty($post)) {
-                //abort(404);
+                abort(404);
             }
 
             $first_post_id = Post::orderBy('id', 'DESC')->first()->id;
@@ -21,7 +21,7 @@ class PostSingleController extends Controller
 
             return view('post-single', ['post' => $post, 'first_post_id' => $first_post_id, 'last_post_id' => $last_post_id]);
         } else {
-            //abort(404);
+            abort(404);
         }
     }
 

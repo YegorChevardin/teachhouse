@@ -34,7 +34,7 @@
                 @else
                     @if(Auth::user()->hasRole('admin'))
                         <li class="nav-item ml-1">
-                            <a class="nav-link page-scroll color-danger" href="{{ route('voyager.dashboard') }}">Админ панель</a>
+                            <a class="nav-link page-scroll color-danger" href="{{ route('voyager.dashboard') }}" target="_blank">Админ панель</a>
                         </li>
                     @endif
                         <li class="nav-item ml-1">

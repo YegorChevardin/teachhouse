@@ -356,5 +356,4 @@ $(document).ready(function () {
             radio_box.classList.remove('d-none');
         }
     });
-
 });

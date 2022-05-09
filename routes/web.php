@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\UserChangeInfo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MeetingSignInController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostSingleController;
+use \App\Http\Controllers\DeleteController;
 
 Route::get('/', function () {
     return redirect(route('home'));
@@ -42,6 +44,13 @@ Route::group(['middleware' => ['auth']], function() {
     })->name('timetable');
 
     Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
+
+    Route::post('/userdelete', [DeleteController::class, 'userDelete'])->name('userdelete');
+
+    Route::post('/changeimg', [UserChangeInfo::class, 'changeimg'])->name('changeimg');
+    Route::post('/changename', [UserChangeInfo::class, 'changeName'])->name('changename');
+    Route::post('/changeemail', [UserChangeInfo::class, 'changeEmail'])->name('changeemail');
+
 });
 
 Route::group(['prefix' => 'admin'], function () {
