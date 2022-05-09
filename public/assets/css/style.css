@@ -1002,6 +1002,33 @@ div.arrow-right:hover {
 }
 
 /*=======================================================
+            CALL TO REGISTER :
+========================================================*/
+#ctr {
+    background: url(../img/banners/book/1.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 120px 0;
+}
+
+#ctr h2,
+#ctr p {
+    color: #fff;
+}
+
+#ctr:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(17, 144, 203, 0.8);
+}
+
+/*=======================================================
 			CALL TO ACTION :
 ========================================================*/
 #cta {
@@ -1026,6 +1053,10 @@ div.arrow-right:hover {
 	top: 0;
 	bottom: 0;
 	background: rgba(17, 144, 203, 0.35);
+}
+
+#meet-time {
+    transition: 0.5s;
 }
 
 /*=======================================================

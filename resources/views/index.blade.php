@@ -39,6 +39,22 @@ SOCIAL MEDIA
         </div>
     </div>
 </div>
+@guest
+    <!-- ==============================================
+CALL TO REGISTER
+=============================================== -->
+    <section id="ctr">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-offset-2 text-center mx-auto wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".4s">
+                    <h2>Чтобы тебе было легче учить английский - мы ведём наш блог</h2>
+                    <p class="lead">Зарегистрируйся и получи доступ к морю информации!</p>
+                    <a href="{{ route('register') }}" class="btn btn-white page-scroll">Зарегистрироваться</a>
+                </div>
+            </div>
+        </div>
+    </section>
+@endif
 <!-- ==============================================
 ABOUT US
 =============================================== -->
@@ -334,7 +350,7 @@ PORTFOLIO
 <!-- ==============================================
 TESTIMONIALS
 =============================================== -->
-<section id="testimonials">
+<section id="testimonials" class="mb-5 shadow-lg">
     <div class="container-fluid">
         <div class="row">
             <!-- Testimonials Img -->
@@ -344,6 +360,20 @@ TESTIMONIALS
                 <h5 class="sans-serif">Что говорят клиенты</h5>
                 <h2>Отзывы</h2>
                 <p>Посмотреть отзывы можно <a href="https://www.instagram.com/p/CKRSxe-sTsk/" target="_blank">кликнув на меня</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==============================================
+CALL TO ACTION
+=============================================== -->
+<section id="cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-offset-2 text-center mx-auto wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".4s">
+                <h2>Преодолей языковой барьер вместе с нами</h2>
+                <p class="lead"></p>
+                <a href="#contact" class="btn btn-white page-scroll">Записаться</a>
             </div>
         </div>
     </div>
@@ -374,7 +404,7 @@ PRICING TABLES
                             <li>Занятия в удобное время</li>
                             <li>Индивидуальные ДЗ</li>
                             <li>Результат после 1 встречи</li>
-                            <li>Живие встречи</li>
+                            <li>Живые встречи</li>
                         </ul>
                     </div>
                 </div>
@@ -404,20 +434,6 @@ PRICING TABLES
     </div>
 </section>
 <!-- ==============================================
-CALL TO ACTION
-=============================================== -->
-<section id="cta">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-offset-2 text-center mx-auto wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".4s">
-                <h2>Преодолей языковой барьер вместе с нами</h2>
-                <p class="lead"></p>
-                <a href="#contact" class="btn btn-white page-scroll">Записаться</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ==============================================
 CONTACT
 =============================================== -->
 <section id="contact">
@@ -427,7 +443,8 @@ CONTACT
             <div class="col-lg-6 contact-content">
                 <h5 class="sans-serif">Запись на встречу</h5>
                 <!-- Forms Start Here -->
-                <form method="post" action="thanks.blade.php" autocomplete="on">
+                <form method="post" action="{{ route('signin') }}" autocomplete="on">
+                    @csrf
                     <!-- Form Input -->
                     <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".2s">
                         <input type="email" class="form-control" placeholder="Электронная почта:" required name="email">
@@ -440,7 +457,34 @@ CONTACT
                     <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
                         <input type="tel" class="form-control" placeholder="Телефон:" required name="phone">
                     </div>
-                    <button type="submit" class="btn btn-primary">Записаться</button>
+                    <div class="d-flex flex-column justify-content-center align-items-center mb-5">
+                        <!-- Meeting type -->
+                        <div id="meet-type" class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="meet-type" value="offline" id="OfflineCheck">
+                                <label class="form-check-label" for="OfflineCheck">
+                                    Оффлайн занятие
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Meeting time -->
+                        <div id="meet-time">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="meet-time" value="1" id="MeetTime">
+                                <label class="form-check-label" for="MeetTime">
+                                    19.20.2022 в 21:00
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="meet-time" value="2" id="MeetTime2" checked>
+                                <label class="form-check-label" for="MeetTime2">
+                                    19.20.2022 в 22:00
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit button -->
+                    <button type="submit" name="submit" value="singin" class="btn btn-primary">Записаться</button>
                 </form>
             </div>
             <div class="col-lg-6 banners-img"></div>

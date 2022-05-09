@@ -345,4 +345,16 @@ $(document).ready(function () {
 		}
 	}
 
+    /* Script for radio in form */
+    let checkbox = document.querySelector("#OfflineCheck");
+    let radio_box = document.querySelector("#meet-time");
+
+    checkbox.addEventListener('click', (event) => {
+        if(checkbox.checked === true) {
+            radio_box.classList.add('d-none');
+        } else {
+            radio_box.classList.remove('d-none');
+        }
+    });
+
 });

@@ -11,7 +11,8 @@
                     <h5 class="sans-serif">Свяжись с нами</h5>
                     <h2>Возник вопрос - <span>пиши</span></h2>
                     <!-- Forms Start Here -->
-                    <form method="post" action="#contact" autocomplete="on">
+                    <form method="post" action="{{ route('rate') }}" autocomplete="on">
+                        @csrf
                         <!-- Form Input -->
                         <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".2s">
                             <input name="email" type="email" class="form-control" placeholder="Электронная почта: " required>
@@ -28,7 +29,7 @@
                         <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s">
                             <textarea name="text" cols="30" rows="5" class="form-control" placeholder="Уведомление:" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit" value="send" class="btn btn-primary">Отправить</button>
                     </form>
                 </div>
                 <!-- Google Map -->
