@@ -32,7 +32,7 @@
                         <a class="nav-link page-scroll" href="{{ route('register') }}">Зарегистрироваться</a>
                     </li>
                 @else
-                    @if(Auth::user()->hasRole('admin'))
+                    @if(!(Auth::user()->hasRole('user')))
                         <li class="nav-item ml-1">
                             <a class="nav-link page-scroll color-danger" href="{{ route('voyager.dashboard') }}" target="_blank">Админ панель</a>
                         </li>
