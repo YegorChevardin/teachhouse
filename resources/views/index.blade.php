@@ -434,7 +434,7 @@ PRICING TABLES
     </div>
 </section>
 <!-- ==============================================
-CONTACT
+SING IN TO MEETING
 =============================================== -->
 <section id="contact">
     <div class="container-fluid">
@@ -442,6 +442,7 @@ CONTACT
             <!-- Order -->
             <div class="col-lg-6 contact-content">
                 <h5 class="sans-serif">Запись на встречу</h5>
+                @if(!empty($meetings[0]))
                 <!-- Forms Start Here -->
                 <form method="post" action="{{ route('signin') }}" autocomplete="on">
                     @csrf
@@ -458,34 +459,24 @@ CONTACT
                         <input type="tel" class="form-control" placeholder="Телефон:" required name="phone">
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center mb-5">
-                        <!-- Meeting type -->
-                        <div id="meet-type" class="mb-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="meet-type" value="offline" id="OfflineCheck">
-                                <label class="form-check-label" for="OfflineCheck">
-                                    Оффлайн занятие
-                                </label>
-                            </div>
-                        </div>
                         <!-- Meeting time -->
                         <div id="meet-time">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="meet-time" value="1" id="MeetTime">
-                                <label class="form-check-label" for="MeetTime">
-                                    19.20.2022 в 21:00
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="meet-time" value="2" id="MeetTime2" checked>
-                                <label class="form-check-label" for="MeetTime2">
-                                    19.20.2022 в 22:00
-                                </label>
-                            </div>
+                            @foreach($meetings as $meeting)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="meet-time" value="{{$meeting->id}}" id="meeting_{{$meeting->id}}">
+                                    <label class="form-check-label" for="meeting_{{$meeting->id}}">
+                                        {{ date('d.m.Y в h:i:sa', strtotime($meeting->time)) }} ({{$meeting->type}});
+                                    </label>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <!-- Submit button -->
                     <button type="submit" name="submit" value="singin" class="btn btn-primary">Записаться</button>
                 </form>
+                @else
+                    <p>К сожалению у нас нет свободных встреч на данное время. Попробуйте позже</p>
+                @endif
             </div>
             <div class="col-lg-6 banners-img"></div>
         </div>

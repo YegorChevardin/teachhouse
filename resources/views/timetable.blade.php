@@ -10,73 +10,38 @@
                                 Расписание встреч
                             </h1>
                             <p>
-                                Встречи состоят из 10 человек. За день до встреч наш менеджер свяжется с вами.
+                                Здесь вы можете посмотреть, кто будет на ваших занятиях. За день до встреч наш менеджер свяжется с вами.
                             </p>
-                            <div class="table-container border-radius-16">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-hover table-borderless table-light border-light">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Sit</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Adipisicing</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Hic</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td>Hic</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">5</th>
-                                            <td>Hic</td>
-                                        </tr>
-                                        <tr class="bg-primary color-light">
-                                            <th scope="row">6</th>
-                                            <td>Hic (You)</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">7</th>
-                                            <td>Hic</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">8</th>
-                                            <td>Hic</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">9</th>
-                                            <td>Hic</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">10</th>
-                                            <td>Hic</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                            @if(!empty($clients[0]))
+                                <div class="table-container mt-5 mb-5 ">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-borderless table-light border-light">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Встреча</th>
+                                                <th scope="col">Имя</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($clients as $client)
+                                                <tr @if(\Illuminate\Support\Facades\Auth::user()->getAuthIdentifier() == $client->user_id) class="bg-primary color-light" @endif>
+                                                    <th scope="col"><?php echo $counter; $counter++; ?></th>
+                                                    <th scope="col">{{ date('d.m.Y в h:i:sa', strtotime(App\Models\Meeting::where('id', $client->meeting_id)->first()->time)) }} ({{App\Models\Meeting::where('id', $client->meeting_id)->first()->type}})</th>
+                                                    <th scope="col">{{$client->name}} @if(\Illuminate\Support\Facades\Auth::user()->getAuthIdentifier() == $client->user_id) (Вы)@endif</th>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        {{$clients->links()}}
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <nav>
-                                        <ul class="pagination pagination">
-                                            <li class="page-item active" aria-current="page">
-                                                <span class="page-link">1</span>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+                            @else
+                                <p class="mt-5">Увы сейчас никто не записан на встречи. Вы можете записаться <a
+                                        href="{{ route('home') }}/#contact">здесь</a>.</p>
+                            @endif
                         </div>
                     </div>
                 </div>

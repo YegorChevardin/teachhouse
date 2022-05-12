@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\UserChangeInfo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
@@ -8,13 +9,12 @@ use App\Http\Controllers\MeetingSignInController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostSingleController;
 use \App\Http\Controllers\DeleteController;
+use \App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return redirect(route('home'));
 });
-Route::get('/home', function() {
-    return view('index');
-})->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', function() {
     return view('contact');
@@ -39,9 +39,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/postsingle/{id?}', [PostSingleController::class, 'show'])->name('postsingle');
 
-    Route::get('/timetable', function() {
-        return view('timetable');
-    })->name('timetable');
+    Route::get('/timetable', [TimetableController::class, 'index'])->name('timetable');
 
     Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
 
