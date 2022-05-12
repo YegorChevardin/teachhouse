@@ -19,6 +19,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', function() {
     return view('contact');
 })->name('contact');
+Route::post('/rate', [ContactController::class, 'rate'])->name('rate');
 
 Route::get('/about', function() {
     return view('about');

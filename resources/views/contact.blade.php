@@ -17,13 +17,13 @@
                         <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".2s">
                             <input name="email" type="email" class="form-control" placeholder="Электронная почта: " required>
                         </div>
-                        <!-- Form Subject -->
-                        <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
-                            <input name="subject" type="text" class="form-control" placeholder="Тема: " required>
-                        </div>
                         <!-- Form Name -->
                         <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
                             <input name="name" type="text" class="form-control" placeholder="Имя: " required>
+                        </div>
+                        <!-- Form Subject -->
+                        <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
+                            <input name="subject" type="text" class="form-control" placeholder="Тема: " required>
                         </div>
                         <!-- Form Group -->
                         <div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s">
